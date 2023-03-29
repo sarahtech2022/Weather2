@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import * as ioicons from 'react-icons/io5'
 import MyForm from './Form';
-import Student from './Student';
+import City from './City';
 
-const ListStudents = () => {
+const ListCities = () => {
 
     // this is my original state with an array of students 
     const [students, setStudents] = useState([]);
@@ -65,7 +65,7 @@ const ListStudents = () => {
             <h2>Techtonica Participants </h2>
             <ul>
                 {students.map((student) => {
-                    return <li key={student.id}> <Student student={student} toDelete={onDelete} toUpdate={onUpdate} /></li>
+                    return <li key={student.id}> <City student={student} toDelete={onDelete} toUpdate={onUpdate} /></li>
                 })}
             </ul>
         </div>
@@ -75,4 +75,4 @@ const ListStudents = () => {
 }
 
 
-export default ListStudents
+export default ListCities;

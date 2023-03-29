@@ -82,22 +82,22 @@ const MyForm = ({ onSaveStudent, editingStudent, onUpdateStudent }) => {
     return (
         <Form className='form-students' onSubmit={handleSubmit}>
             <Form.Group>
-                <Form.Label>First Name</Form.Label>
+                <Form.Label>Name</Form.Label>
                 <input
                     type="text"
                     id="add-user-name"
-                    placeholder="First Name"
+                    placeholder="Name"
                     required
                     value={student.firstname}
                     onChange={handleNameChange}
                 />
             </Form.Group>
             <Form.Group>
-                <Form.Label>Last Name</Form.Label>
+                <Form.Label>City</Form.Label>
                 <input
                     type="text"
                     id="add-user-lastname"
-                    placeholder="Last Name"
+                    placeholder="City"
                     required
                     value={student.lastname}
                     onChange={handleLastnameChange}
@@ -108,10 +108,10 @@ const MyForm = ({ onSaveStudent, editingStudent, onUpdateStudent }) => {
                 id={`isCurrent`}
                 checked={student.is_current}
                 onChange={handleCheckChange}
-                label={`Are they in the current program?`}
+                label={`Is it a favorite city?`}
             />
             <Form.Group>
-            <Button type="submit" variant="outline-success">{student.id ? "Edit Student" : "Add Student"}</Button>
+            <Button type="submit" variant="outline-success">{student.id ? "Edit Student" : "Search"}</Button>
             {student.id ? <Button type="button" variant="outline-warning" onClick={clearForm}>Cancel</Button> : null}
             </Form.Group>
         </Form>
