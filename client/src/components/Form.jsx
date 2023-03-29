@@ -1,35 +1,35 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Form } from "react-bootstrap"
 
-const MyForm = ({ onSaveStudent, editingStudent, onUpdateStudent }) => {
+const MyForm = ({ onSaveStudent, onUpdateStudent }) => {
 
     // This is the original State with not initial student 
-    const [student, setStudent] = useState(editingStudent || {
-        firstname: "",
-        lastname: "",
-        is_current: false
+    const [city, setCity] = useState( { //this city is my STATE*****
+        name: "",
+        city: "",
+        fave: false
     });
 
     //create functions that handle the event of the user typing into the form
     const handleNameChange = (event) => {
-        const firstname = event.target.value;
-        setStudent((student) => ({ ...student, firstname }));
+        const name = event.target.value;
+        setCity((prevState) => ({ ...prevState, name }));  //do the spread operator, because those 3 things are in one object and du dont wanna lose what the user typed before
 
     };
 
-    const handleLastnameChange = (event) => {
-        const lastname = event.target.value;
-        setStudent((student) => ({ ...student, lastname }));
+    const handleCityChange = (event) => {
+        const city = event.target.value;
+        setCity((prevState) => ({ ...prevState, city})); //city in yellow, is the previous state value I had *****
     };
 
     const handleCheckChange = (event) => {
-        const is_current = event.target.checked;
+        const fave = event.target.checked;
         //console.log(iscurrent);
-        setStudent((student) => ({ ...student, is_current }));
+        setCity((prevState) => ({ ...prevState, fave }));
     };
 
     const clearForm = () => {
-        setStudent({ firstname: "", lastname: "", is_current: false })
+        setCity({ name: "", city: "", fave: false })
     }
 
     //A function to handle the post request
@@ -70,14 +70,19 @@ const MyForm = ({ onSaveStudent, editingStudent, onUpdateStudent }) => {
 
 
     //A function to handle the submit in both cases - Post and Put request!
+    //When the form is submitted, call the function the parent gives it 
+    //Form needs to tell Listcities, I have a new city for u to keep track of!!
     const handleSubmit = (e) => {
-        e.preventDefault();
-        if (student.id) {
-            putStudent(student);
-        } else {
-            postStudent(student);
-        }
+        e.preventDefault(); //preventing browser from doing default stuff, like reloading page
+        // if (student.id) {
+        //     putStudent(student);
+        // } else {
+        //     postStudent(student);
+        // }
+        
     };
+//Listcites passes a function into form, whatever function Listcities provide will be in handleSubmit
+    
 
     return (
         <Form className='form-students' onSubmit={handleSubmit}>
@@ -88,7 +93,7 @@ const MyForm = ({ onSaveStudent, editingStudent, onUpdateStudent }) => {
                     id="add-user-name"
                     placeholder="Name"
                     required
-                    value={student.firstname}
+                    value={city.name}
                     onChange={handleNameChange}
                 />
             </Form.Group>
@@ -99,20 +104,20 @@ const MyForm = ({ onSaveStudent, editingStudent, onUpdateStudent }) => {
                     id="add-user-lastname"
                     placeholder="City"
                     required
-                    value={student.lastname}
-                    onChange={handleLastnameChange}
+                    value={city.city}
+                    onChange={handleCityChange}
                 />
             </Form.Group>
             <Form.Check
                 type={'checkbox'}
                 id={`isCurrent`}
-                checked={student.is_current}
+                checked={city.fave}
                 onChange={handleCheckChange}
                 label={`Is it a favorite city?`}
             />
             <Form.Group>
-            <Button type="submit" variant="outline-success">{student.id ? "Edit Student" : "Search"}</Button>
-            {student.id ? <Button type="button" variant="outline-warning" onClick={clearForm}>Cancel</Button> : null}
+            <Button type="submit" variant="outline-success">{city.id ? "Edit Student" : "Search"}</Button>
+            {city.id ? <Button type="button" variant="outline-warning" onClick={clearForm}>Cancel</Button> : null}
             </Form.Group>
         </Form>
     );
