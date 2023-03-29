@@ -57,8 +57,16 @@ const ListCities = () => {
 
     }
 
+    ///****************************** */
+    const getFormInfo= (name, city, fave) => {
+        console.log(name, city, fave )
+    }
 
 
+
+
+
+///****************************** */
     return (
         <div className="mybody">
         <div className="list-students">
@@ -69,7 +77,7 @@ const ListCities = () => {
                 })}
             </ul>
         </div>
-        <MyForm key={editingStudent ? editingStudent.id : null} onSaveStudent={onSaveStudent} editingStudent={editingStudent} onUpdateStudent={updateStudent} />
+        <MyForm key={editingStudent ? editingStudent.id : null} onSaveStudent={onSaveStudent} editingStudent={editingStudent} onUpdateStudent={updateStudent}  getFormInfo={getFormInfo}/>
         </div>
     );
 }

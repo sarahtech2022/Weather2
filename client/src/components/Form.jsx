@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Form } from "react-bootstrap"
 
-const MyForm = ({ onSaveStudent, onUpdateStudent }) => {
+const MyForm = ({ onSaveStudent, onUpdateStudent, getFormInfo }) => {
 
     // This is the original State with not initial student 
     const [city, setCity] = useState( { //this city is my STATE*****
@@ -79,6 +79,7 @@ const MyForm = ({ onSaveStudent, onUpdateStudent }) => {
         // } else {
         //     postStudent(student);
         // }
+        getFormInfo(city.name, city.city, city.fave )
         
     };
 //Listcites passes a function into form, whatever function Listcities provide will be in handleSubmit
