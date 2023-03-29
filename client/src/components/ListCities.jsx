@@ -62,7 +62,7 @@ const ListCities = () => {
     return (
         <div className="mybody">
         <div className="list-students">
-            <h2>Techtonica Participants </h2>
+            <h2>City Weather Search </h2>
             <ul>
                 {students.map((student) => {
                     return <li key={student.id}> <City student={student} toDelete={onDelete} toUpdate={onUpdate} /></li>
