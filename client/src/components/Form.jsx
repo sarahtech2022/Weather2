@@ -76,11 +76,11 @@ const MyForm = ({ onSaveStudent, onUpdateStudent, addCity}) => {
     //Form needs to tell Listcities, I have a new city for u to keep track of!!
     const handleSubmit = (e) => {
         e.preventDefault(); //preventing browser from doing default stuff, like reloading page
-        // if (student.id) {
-        //     putStudent(student);
-        // } else {
-        //     postStudent(student);
-        // }
+        if (city.id) {
+            putStudent(city).then(() => {addCity(city)});
+        } else {
+            postStudent(city).then(() => {addCity(city)});
+        }
         // setGetFormInfo(city.name, city.city, city.fave )
         console.log("This is my handlesubmit")
 
@@ -96,7 +96,7 @@ const MyForm = ({ onSaveStudent, onUpdateStudent, addCity}) => {
        // two ways to do it: provide both cities and setcity - form will provide an array to city (form defines logic)
        //Provide one function as a prop to form that recieves a city (parent defines the logic)--> better code
         // setCity()
-        addCity(city)
+       
         
          clearForm();
         

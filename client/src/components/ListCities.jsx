@@ -76,7 +76,7 @@ const ListCities = () => {
     // }
 ///****************************** */
 
-console.log({ cities });
+// console.log({ cities }, performance.now());
     return (
         <div className="mybody">
         <div className="list-students">
