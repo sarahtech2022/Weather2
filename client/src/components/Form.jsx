@@ -71,6 +71,26 @@ const MyForm = ({ onSaveStudent, onUpdateStudent, addCity}) => {
     };
 
 
+//A function to do the get request and set the state from openweather api
+  const loadCity = (city) => {
+    console.log(city, "This is my weather fetch");
+    // pass city name as a param
+    const params = new URLSearchParams({ cityName: city });
+    // fetch the data from the backend
+    fetch(`http://localhost:8081/weather?${params}`)
+      .then((response) => response.json())
+      .then((result) => {
+        // console.log("this is the data: ", result)
+        setCity(result.name);
+        setResult(result);
+        
+      });
+  };
+  //loadcity is an asych operation and cant do it inside a component because its synchronous!!!
+
+
+
+
     //A function to handle the submit in both cases - Post and Put request!
     //When the form is submitted, call the function the parent gives it 
     //Form needs to tell Listcities, I have a new city for u to keep track of!!
@@ -97,7 +117,7 @@ const MyForm = ({ onSaveStudent, onUpdateStudent, addCity}) => {
        //Provide one function as a prop to form that recieves a city (parent defines the logic)--> better code
         // setCity()
        
-        
+        loadCity(city);
          clearForm();
         
     };

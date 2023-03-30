@@ -5,6 +5,10 @@ import City from './City';
 
 const ListCities = () => {
 
+    const getWeatherCity= () => {
+        
+    }
+
     // this is my original state with an array of students 
     //form component pushes to this state!!!
     const [cities, setCities] = useState([]);
@@ -87,10 +91,10 @@ const ListCities = () => {
                 })}
             </ul>
         </div>
-        <MyForm key={editingStudent ? editingStudent.id : null} onSaveStudent={onSaveStudent} editingStudent={editingStudent} onUpdateStudent={updateStudent} setCities={setCities} addCity={addCity} />
+        <MyForm key={editingStudent ? editingStudent.id : null} onSaveStudent={onSaveStudent} editingStudent={editingStudent} onUpdateStudent={updateStudent}  addCity={addCity} />
         </div>
     );
 }
-
+//setCities={setCities}
 
 export default ListCities;
