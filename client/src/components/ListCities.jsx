@@ -82,8 +82,8 @@ const ListCities = () => {
         <div className="list-students">
             <h2>City Weather Search </h2>
             <ul>
-                {cities.map((city) => {
-                    return <li key={city.id}> <City student={city} toDelete={onDelete} toUpdate={onUpdate}  /></li>
+                {cities.map((city, index) => {  //in map u have access to the city and the index (easy way)
+                    return <li key={index}> <City student={city} toDelete={onDelete} toUpdate={onUpdate}  /></li>
                 })}
             </ul>
         </div>

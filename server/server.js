@@ -28,14 +28,14 @@ app.get("/api/students", async (req, res) => {
 app.post("/api/students", async (req, res) => {
   try {
     const newStudent = {
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      iscurrent: req.body.iscurrent,
+      name: req.body.name,
+      city: req.body.city,
+      fave: req.body.fave,
     };
     //console.log([newStudent.firstname, newStudent.lastname, newStudent.iscurrent]);
     const result = await db.query(
-      "INSERT INTO students(firstname, lastname, is_current) VALUES($1, $2, $3) RETURNING *",
-      [newStudent.firstname, newStudent.lastname, newStudent.iscurrent]
+      "INSERT INTO students(name, city, fave) VALUES($1, $2, $3) RETURNING *",
+      [newStudent.name, newStudent.city, newStudent.fave]
     );
     console.log(result.rows[0]);
     res.json(result.rows[0]);
@@ -65,9 +65,9 @@ app.put("/api/students/:studentId", async (req, res) => {
   const studentId = req.params.studentId;
   const updatedStudent = {
     id: req.body.id,
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
-    iscurrent: req.body.is_current,
+    name: req.body.name,
+    city: req.body.city,
+    fave: req.body.fave,
   };
   console.log("In the server from the url - the student id", studentId);
   console.log(
@@ -75,11 +75,11 @@ app.put("/api/students/:studentId", async (req, res) => {
     updatedStudent
   );
   // UPDATE students SET lastname = "something" WHERE id="16";
-  const query = `UPDATE students SET firstname=$1, lastname=$2, is_current=$3 WHERE id=${studentId} RETURNING *`;
+  const query = `UPDATE students SET name=$1, city=$2, fave=$3 WHERE id=${studentId} RETURNING *`;
   const values = [
-    updatedStudent.firstname,
-    updatedStudent.lastname,
-    updatedStudent.iscurrent,
+    updatedStudent.name,
+    updatedStudent.city,
+    updatedStudent.fave,
   ];
   try {
     const updated = await db.query(query, values);
