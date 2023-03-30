@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Form } from "react-bootstrap"
 
-const MyForm = ({ onSaveStudent, onUpdateStudent, getFormInfo }) => {
+const MyForm = ({ onSaveStudent, onUpdateStudent, onGetFormInfo }) => {
 
     // This is the original State with not initial student 
     const [city, setCity] = useState( { //this city is my STATE*****
@@ -34,6 +34,7 @@ const MyForm = ({ onSaveStudent, onUpdateStudent, getFormInfo }) => {
 
     //A function to handle the post request
     const postStudent = (newStudent) => {
+        // console.log(newStudent, "hi I am the post request");
         return fetch("http://localhost:8080/api/students", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -46,6 +47,7 @@ const MyForm = ({ onSaveStudent, onUpdateStudent, getFormInfo }) => {
                 //console.log("From the post ", data);
                 //I'm sending data to the List of Students (the parent) for updating the list
                 onSaveStudent(data);
+                // console.log(data);
                 //this line just for cleaning the form
                 clearForm();
             });
@@ -79,7 +81,19 @@ const MyForm = ({ onSaveStudent, onUpdateStudent, getFormInfo }) => {
         // } else {
         //     postStudent(student);
         // }
-        getFormInfo(city.name, city.city, city.fave )
+        // setGetFormInfo(city.name, city.city, city.fave )
+        console.log("This is my handlesubmit")
+
+        if (city.id) {
+            putStudent(city);
+            console.log("I am the put request")
+        } else {
+            postStudent(city);
+            console.log("I am the post request")
+        }
+
+        onGetFormInfo([city.name, " ", city.city, city.fave]) //must be in an array format!!!!!! dont need spread operator??!!!
+         clearForm();
         
     };
 //Listcites passes a function into form, whatever function Listcities provide will be in handleSubmit

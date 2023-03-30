@@ -11,6 +11,11 @@ const ListCities = () => {
     //this is the state needed for the UpdateRequest
     const [editingStudent, setEditingStudent] = useState(null)
 
+    //**************************************************************** */
+    //This is the state I will use to create a function to pass in as a prop to form to help me get the 
+    //data from there!!! Then I will sent setGetFormInfo function into the Form component as a prop!
+    const [getFormInfo, setGetFormInfo]= useState([]);
+
     const loadStudents = () => {
         // A function to fetch the list of students that will be load anytime that list change
         fetch("http://localhost:8080/api/students")
@@ -58,26 +63,22 @@ const ListCities = () => {
     }
 
     ///****************************** */
-    const getFormInfo= (name, city, fave) => {
-        console.log(name, city, fave )
-    }
-
-
-
-
-
+    //With Gisselle
+    // const getFormInfo= (name, city, fave) => {
+    //     console.log(name, city, fave )
+    // }
 ///****************************** */
     return (
         <div className="mybody">
         <div className="list-students">
             <h2>City Weather Search </h2>
             <ul>
-                {students.map((student) => {
-                    return <li key={student.id}> <City student={student} toDelete={onDelete} toUpdate={onUpdate} /></li>
+                {students.map((city) => {
+                    return <li key={city.id}> <City city={city} toDelete={onDelete} toUpdate={onUpdate} getFormInfo={getFormInfo} /></li>
                 })}
             </ul>
         </div>
-        <MyForm key={editingStudent ? editingStudent.id : null} onSaveStudent={onSaveStudent} editingStudent={editingStudent} onUpdateStudent={updateStudent}  getFormInfo={getFormInfo}/>
+        <MyForm key={editingStudent ? editingStudent.id : null} onSaveStudent={onSaveStudent} editingStudent={editingStudent} onUpdateStudent={updateStudent}  onGetFormInfo={setGetFormInfo}/>
         </div>
     );
 }
