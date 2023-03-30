@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import * as ioicons from 'react-icons/io5'
 
 
-const City = ({student, toUpdate, toDelete, getFormInfo}) => {
+const City = ({student, toUpdate, toDelete}) => {
     const [city, setCity] = useState("");
   const [result, setResult] = useState(null);
 
@@ -38,7 +38,7 @@ const City = ({student, toUpdate, toDelete, getFormInfo}) => {
     return (
         <Card>
             <Card.Body>
-            <Card.Title>{getFormInfo} </Card.Title>
+            <Card.Title> {student.name} </Card.Title>
             <Button variant="outline-danger" onClick={()=>{onDelete(student)}} style={{padding: '0.6em', marginRight:'0.9em'}}><ioicons.IoTrash/></Button>
             <Button variant="outline-info" onClick={()=>{onUpdate(student)}} style={{padding: '0.6em'}}> <ioicons.IoSync/></Button>
             </Card.Body>

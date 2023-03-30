@@ -6,7 +6,14 @@ import City from './City';
 const ListCities = () => {
 
     // this is my original state with an array of students 
-    const [students, setStudents] = useState([]);
+    //form component pushes to this state!!!
+    const [cities, setCities] = useState([]);
+
+
+    //Create new array in parent!
+    const addCity= (newCity) => {
+        setCities([...cities, newCity ]);
+    };
 
     //this is the state needed for the UpdateRequest
     const [editingStudent, setEditingStudent] = useState(null)
@@ -14,24 +21,24 @@ const ListCities = () => {
     //**************************************************************** */
     //This is the state I will use to create a function to pass in as a prop to form to help me get the 
     //data from there!!! Then I will sent setGetFormInfo function into the Form component as a prop!
-    const [getFormInfo, setGetFormInfo]= useState([]);
+
 
     const loadStudents = () => {
         // A function to fetch the list of students that will be load anytime that list change
         fetch("http://localhost:8080/api/students")
             .then((response) => response.json())
             .then((students) => {
-                setStudents(students);
+                setCities(students);
             });
     }
 
     useEffect(() => {
         loadStudents();
-    }, [students]);
+    }, [cities]);
 
     const onSaveStudent = (newStudent) => {
         //console.log(newStudent, "From the parent - List of Students");
-        setStudents((students) => [...students, newStudent]);
+        setCities((students) => [...students, newStudent]);
     }
 
 
@@ -68,17 +75,19 @@ const ListCities = () => {
     //     console.log(name, city, fave )
     // }
 ///****************************** */
+
+console.log({ cities });
     return (
         <div className="mybody">
         <div className="list-students">
             <h2>City Weather Search </h2>
             <ul>
-                {students.map((city) => {
-                    return <li key={city.id}> <City city={city} toDelete={onDelete} toUpdate={onUpdate} getFormInfo={getFormInfo} /></li>
+                {cities.map((city) => {
+                    return <li key={city.id}> <City student={city} toDelete={onDelete} toUpdate={onUpdate}  /></li>
                 })}
             </ul>
         </div>
-        <MyForm key={editingStudent ? editingStudent.id : null} onSaveStudent={onSaveStudent} editingStudent={editingStudent} onUpdateStudent={updateStudent}  onGetFormInfo={setGetFormInfo}/>
+        <MyForm key={editingStudent ? editingStudent.id : null} onSaveStudent={onSaveStudent} editingStudent={editingStudent} onUpdateStudent={updateStudent} setCities={setCities} addCity={addCity} />
         </div>
     );
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Form } from "react-bootstrap"
 
-const MyForm = ({ onSaveStudent, onUpdateStudent, onGetFormInfo }) => {
+const MyForm = ({ onSaveStudent, onUpdateStudent, addCity}) => {
 
     // This is the original State with not initial student 
     const [city, setCity] = useState( { //this city is my STATE*****
@@ -84,15 +84,20 @@ const MyForm = ({ onSaveStudent, onUpdateStudent, onGetFormInfo }) => {
         // setGetFormInfo(city.name, city.city, city.fave )
         console.log("This is my handlesubmit")
 
-        if (city.id) {
-            putStudent(city);
-            console.log("I am the put request")
-        } else {
-            postStudent(city);
-            console.log("I am the post request")
-        }
+        // if (city.id) {
+        //     putStudent(city);
+        //     console.log("I am the put request")
+        // } else {
+        //     postStudent(city);
+        //     console.log("I am the post request")
+        // }
 
-        onGetFormInfo([city.name, " ", city.city, city.fave]) //must be in an array format!!!!!! dont need spread operator??!!!
+        // setFormInfo([city.name, " ", city.city, city.fave]) //must be in an array format!!!!!! dont need spread operator??!!!
+       // two ways to do it: provide both cities and setcity - form will provide an array to city (form defines logic)
+       //Provide one function as a prop to form that recieves a city (parent defines the logic)--> better code
+        // setCity()
+        addCity(city)
+        
          clearForm();
         
     };
