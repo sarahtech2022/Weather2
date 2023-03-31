@@ -80,9 +80,9 @@ button.btn.btn-primary {
 
 #imagetitle{
     /* display: block; */
-      margin-left: 375px;
+      margin-left: 400px;
       margin-right: auto;
-      width: 10%;
+      width: 9%;
 }
 
 #imagetitle2 {
@@ -90,4 +90,11 @@ button.btn.btn-primary {
   margin-left: auto;
   margin-right: auto;
   width: 9%;
+}
+
+#imagetitle3 {
+  /* display: block; */
+  margin-left: auto;
+  margin-right: auto;
+  width: 11%;
 }
