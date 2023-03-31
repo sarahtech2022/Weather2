@@ -140,7 +140,7 @@ const MyForm = ({ onSaveStudent, onUpdateStudent, addCity}) => {
                 label={`Is it a favorite city?`}
             />
             <Form.Group>
-            <Button type="submit" variant="outline-success">{city.id ? "Edit Student" : "Add User"}</Button>
+            <Button type="submit" variant="outline-success">{city.id ? "Edit Student" : "Add User & City"}</Button>
             {city.id ? <Button type="button" variant="outline-warning" onClick={clearForm}>Cancel</Button> : null}
             </Form.Group>
         </Form>

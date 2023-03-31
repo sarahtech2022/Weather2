@@ -1,6 +1,6 @@
 .App {
   min-height: 100vh;
-  background-color: rgb(238, 232, 232);
+  background-color: rgb(73, 103, 210);
   margin: 5px;
 }
 
@@ -74,13 +74,22 @@ button.btn.btn-primary {
 
 
 #title{
-  margin-left: 400px;
  
+  text-align: center;
+
+  font-family: Changa One;
+  color: rgb(148, 198, 229);
+text-shadow: 1px 1px 2px black,
+  0 0 1em rgb(99, 175, 226),
+  0 0 0.2em rgb(122, 186, 201);
+  font-size: 4rem;
+  font-weight: 600;
+
 }
 
 #imagetitle{
     /* display: block; */
-      margin-left: 400px;
+      margin-left: 420px;
       margin-right: auto;
       width: 9%;
 }
@@ -98,3 +107,32 @@ button.btn.btn-primary {
   margin-right: auto;
   width: 11%;
 }
+
+/* @import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&family=Calligraffitti&display=swap');
+
+body {
+  background: #6868AC;
+}
+
+#div1 {
+  font-family: 'Calligraffitti', cursive;
+    font-weight: 700;
+    font-size: 3rem;
+    text-shadow: -12px 2px 17px #ced0d3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: #ccd4e1;
+    text-shadow: 4px 4px 0px #6aaee2,
+      4px 4px 0px #411582,
+      6px 6px 0px #418b62,
+      7px 7px 0px #5350ef,
+      14px 14px 0px #94c5df,
+      12px 12px 0px #90B1E0;
+    position:relative;
+    padding-top: 90px;
+
+}
+ */
