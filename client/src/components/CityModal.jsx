@@ -41,7 +41,7 @@ loadCity(cityName);
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Weather for your city:</Modal.Title>
         </Modal.Header>
         <Modal.Body> {show? dataAPI && <WeatherCard data={dataAPI} /> : null }</Modal.Body>
         <Modal.Footer>

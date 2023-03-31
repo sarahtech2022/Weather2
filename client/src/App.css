@@ -15,7 +15,7 @@ a.navbar-brand {
 }
 
 .nav-link {
-  color: white !important;
+  color: rgb(239, 241, 244) !important;
   margin-left: 5em;
 }
 
@@ -61,6 +61,7 @@ button.btn.btn-primary {
 .form-label {
   margin-bottom: 0 !important;
   margin-top: 0.5em;
+
 }
 
 .form-check {
@@ -70,6 +71,7 @@ button.btn.btn-primary {
 .card-body {
   margin-left: 2em;
   margin-right: 2em;
+
 }
 
 
