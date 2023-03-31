@@ -109,7 +109,7 @@ const MyForm = ({ onSaveStudent, onUpdateStudent, addCity}) => {
     
 
     return (
-        <Form className='form-students' onSubmit={handleSubmit}>
+     <Form className='form-students' onSubmit={handleSubmit}>
             <Form.Group>
                 <Form.Label>Name</Form.Label>
                 <input
@@ -121,6 +121,7 @@ const MyForm = ({ onSaveStudent, onUpdateStudent, addCity}) => {
                     onChange={handleNameChange}
                 />
             </Form.Group>
+            
             <Form.Group>
                 <Form.Label>City</Form.Label>
                 <input
@@ -144,6 +145,7 @@ const MyForm = ({ onSaveStudent, onUpdateStudent, addCity}) => {
             {city.id ? <Button type="button" variant="outline-warning" onClick={clearForm}>Cancel</Button> : null}
             </Form.Group>
         </Form>
+      
     );
 };
 
