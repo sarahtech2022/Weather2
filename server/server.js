@@ -99,7 +99,8 @@ app.put("/api/students/:studentId", async (req, res) => {
 //So add the query part to the front end
 app.get("/weather", (req, res) => {
   const cityName = req.query.cityName; //req.query what frontend is sending to the back (getting thhe city the user entered!)//req is request. 3: body, query, route , Get the query section out of the request
-  const apiKey = "0e9342e28737ba69d50dca7f36aec7e6";
+  console.log(req.query.cityName, "hi ruby");
+  const apiKey = "cfcfef3e000f27583876a6dda964524f";
   const params = new URLSearchParams({
     q: req.query.cityName,
     appid: apiKey,

@@ -18,7 +18,12 @@ const City = ({formSubmissionData, toUpdate, toDelete}) => {
         toDelete(toDeleteStudent)
     }
 
-
+   // loads the city data when submitting
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // pass in the city to loadCity to get data from backend
+      loadCity(city);
+  };
 
 
 
@@ -27,7 +32,7 @@ const City = ({formSubmissionData, toUpdate, toDelete}) => {
             <Card.Body>
             <Card.Title> {formSubmissionData.name} {formSubmissionData.city}  </Card.Title>
             <Button variant="outline-danger" onClick={()=>{onDelete(formSubmissionData)}} style={{padding: '0.6em', marginRight:'0.9em'}}><ioicons.IoTrash/></Button>
-           <CityModal/>
+           <CityModal cityName={formSubmissionData.city} handleSubmit={handleSubmit}/>
             </Card.Body>
         </Card>
     )
