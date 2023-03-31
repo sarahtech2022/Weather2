@@ -100,7 +100,7 @@ const ListCities = () => {
             <ul>
                 {cities.map((city, index) => {  //in map u have access to the city and the index (easy way) 
                    //Here create another variable and do other state (weatherData=weatherArray[index]) //weatherArray is my state (Limited API calls, dont do)
-                   return <li key={index}> <City formSubmissionData={city} toDelete={onDelete}   /></li>
+                   return <li key={index}> <div id="citydiv"> <City formSubmissionData={city} toDelete={onDelete}   /> </div></li>
                 })}
             </ul>
         </div>
