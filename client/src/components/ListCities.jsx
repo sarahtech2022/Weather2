@@ -16,6 +16,7 @@ const ListCities = () => {
     //form component pushes to this state!!!
     const [cities, setCities] = useState([]);
 
+    //*********STATE for the  ************/
 
     //Create new array in parent!
     const addCity= (newCity) => {
@@ -41,7 +42,7 @@ const ListCities = () => {
 
     useEffect(() => {
         loadStudents();
-    }, [cities]);
+    }, []); //fixed the looop, deleted cities(students)!!!!!!!!
 
     const onSaveStudent = (newStudent) => {
         //console.log(newStudent, "From the parent - List of Students");
@@ -84,25 +85,8 @@ const ListCities = () => {
 ///****************************** */
 
 
-//A function to do the get request and set the state from openweather api
-  const loadCity = (city) => {
-    console.log(city, "This is my weather fetch");
-    // pass city name as a param
-    const params = new URLSearchParams({ cityName: city });
-    // fetch the data from the backend
-    fetch(`http://localhost:8080/weather?${params}`)
-      .then((response) => response.json())
-      .then((result) => {
-        // console.log("this is the data: ", result)
-        addCity(result);
-        
-      });
-  };
-  //loadcity is an asych operation and cant do it inside a component because its synchronous!!!
 
-  const handleSubmit = (city) => {
-      loadCity(city)
-  }
+
 
 
 
@@ -115,12 +99,12 @@ const ListCities = () => {
             <h2>City Weather Search </h2>
             <ul>
                 {cities.map((city, index) => {  //in map u have access to the city and the index (easy way) 
-                   //Here create another variable and do other state (weatherData=weatherArray[index]) //weatherArray is my state
+                   //Here create another variable and do other state (weatherData=weatherArray[index]) //weatherArray is my state (Limited API calls, dont do)
                    return <li key={index}> <City formSubmissionData={city} toDelete={onDelete}   /></li>
                 })}
             </ul>
         </div>
-        <MyForm onSaveStudent={onSaveStudent}    addCity={addCity} onSubmit={handleSubmit} />
+        <MyForm onSaveStudent={onSaveStudent} addCity={addCity}  />
         </div>
     );
 }

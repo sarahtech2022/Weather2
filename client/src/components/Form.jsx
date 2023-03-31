@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Form } from "react-bootstrap"
 
-const MyForm = ({ onSaveStudent, onUpdateStudent, addCity, onSubmit}) => {
+const MyForm = ({ onSaveStudent, onUpdateStudent, addCity}) => {
 
     // This is the original State with not initial student 
     const [city, setCity] = useState( { //this city is my STATE*****
@@ -101,7 +101,7 @@ const MyForm = ({ onSaveStudent, onUpdateStudent, addCity, onSubmit}) => {
        //Provide one function as a prop to form that recieves a city (parent defines the logic)--> better code
         // setCity()
        
-        onSubmit(city.city);
+        // onSubmit(city.city);
          clearForm();
         
     };
@@ -140,7 +140,7 @@ const MyForm = ({ onSaveStudent, onUpdateStudent, addCity, onSubmit}) => {
                 label={`Is it a favorite city?`}
             />
             <Form.Group>
-            <Button type="submit" variant="outline-success">{city.id ? "Edit Student" : "Search"}</Button>
+            <Button type="submit" variant="outline-success">{city.id ? "Edit Student" : "Add User"}</Button>
             {city.id ? <Button type="button" variant="outline-warning" onClick={clearForm}>Cancel</Button> : null}
             </Form.Group>
         </Form>
