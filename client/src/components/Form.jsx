@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Form } from "react-bootstrap"
 
-const MyForm = ({ onSaveStudent, onUpdateStudent, addCity}) => {
+const MyForm = ({ onSaveStudent, onUpdateStudent, addCity, onSubmit}) => {
 
     // This is the original State with not initial student 
     const [city, setCity] = useState( { //this city is my STATE*****
@@ -71,22 +71,6 @@ const MyForm = ({ onSaveStudent, onUpdateStudent, addCity}) => {
     };
 
 
-//A function to do the get request and set the state from openweather api
-  const loadCity = (city) => {
-    console.log(city, "This is my weather fetch");
-    // pass city name as a param
-    const params = new URLSearchParams({ cityName: city });
-    // fetch the data from the backend
-    fetch(`http://localhost:8081/weather?${params}`)
-      .then((response) => response.json())
-      .then((result) => {
-        // console.log("this is the data: ", result)
-        setCity(result.name);
-        setResult(result);
-        
-      });
-  };
-  //loadcity is an asych operation and cant do it inside a component because its synchronous!!!
 
 
 
@@ -117,7 +101,7 @@ const MyForm = ({ onSaveStudent, onUpdateStudent, addCity}) => {
        //Provide one function as a prop to form that recieves a city (parent defines the logic)--> better code
         // setCity()
        
-        loadCity(city);
+        onSubmit(city.city);
          clearForm();
         
     };

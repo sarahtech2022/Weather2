@@ -93,27 +93,29 @@ app.put("/api/students/:studentId", async (req, res) => {
 });
 
 // ***** Connect to the Open Weather API ******** //
+//You can design ur backend however u want,
+//Its just when im calling their API i need to follow their docs
+//Route in front end and back end DO need to match, but the query part can be different!!!!!
+//So add the query part to the front end
 app.get("/weather", (req, res) => {
-  const cityName = req.query.cityName;
-  const realCityName = cityName.city;
-  console.log(cityName, realCityName);
-  // const apiKey = "0e9342e28737ba69d50dca7f36aec7e6";
-  // const params = new URLSearchParams({
-  //   q: req.query.cityName,
-  //   appid: apiKey,
-  //   units: "imperial",
-  // });
-  // const url = `https://api.openweathermap.org/data/2.5/weather?${params}`;
-  // console.log(url);
-  // fetch(url)
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     console.log(data);
-  //     res.send({ data });
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
+  const cityName = req.query.cityName; //req.query what frontend is sending to the back (getting thhe city the user entered!)//req is request. 3: body, query, route , Get the query section out of the request
+  const apiKey = "0e9342e28737ba69d50dca7f36aec7e6";
+  const params = new URLSearchParams({
+    q: req.query.cityName,
+    appid: apiKey,
+    units: "imperial",
+  });
+  const url = `https://api.openweathermap.org/data/2.5/weather?${params}`;
+  console.log(url);
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      res.send({ data });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
 // console.log that your server is up and running
