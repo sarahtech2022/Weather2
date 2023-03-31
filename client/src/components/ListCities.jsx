@@ -96,7 +96,7 @@ const ListCities = () => {
     return (
         <div className="mybody">
         <div className="list-students">
-            <h2>City Weather Search </h2>
+            {/* <h2>City Weather Search </h2> */}
             <ul>
                 {cities.map((city, index) => {  //in map u have access to the city and the index (easy way) 
                    //Here create another variable and do other state (weatherData=weatherArray[index]) //weatherArray is my state (Limited API calls, dont do)
